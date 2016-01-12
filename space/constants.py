@@ -1,0 +1,4 @@
+########## STARS
+
+# spectral classes
+
