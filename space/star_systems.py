@@ -1,10 +1,11 @@
 """ created 12/01/2016
 author: marcello
 """
+from space.geometry import Coordinates2D
 from space.tools import star_random_class
 
 
-class Star:
+class Star():
 
     def __init__(self, name: str = 'star', cls: str = None, label: str = None):
         """If cls (spectral class) left None, it will be random."""
@@ -39,14 +40,18 @@ class Asteroids(Planet):
     pass # TODO: other physical parameters
 
 
-class System():
+class System(Coordinates2D):
     """One star with 0 or + planet(s).
 
     Can iterate on planets.""" # TODO: multiple stars system
 
-    def __init__(self, star: Star, planets: list, name: str = 'system'):
-        """Accepts two list: stars and planet."""
+    def __init__(self, star: Star,
+                 planets: list,
+                 coord = (0, 0),
+                 name: str = 'system'):
+        """Accepts two list: stars and planet. Coord is (x, y)."""
 
+        super().__init__(coord[0], coord[1])
         self._name = name
         self._star = star
         self._planets = planets
@@ -63,6 +68,7 @@ class System():
             raise StopIteration
         else:
             return self._planets[self._curr - 1]
+
 
 
 
