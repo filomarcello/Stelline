@@ -8,9 +8,9 @@ Graphic user interface using tkinter.
 import tkinter as tk
 import PIL.Image
 import PIL.ImageTk
-from engine.constants import GAME_NAME
-from engine.constants import BLACK, WHITE
-from engine.constants import IMAGES_PATH
+from constants import GAME_NAME
+from constants import BLACK, WHITE
+from constants import IMAGES_PATH
 import os
 
 # functions
@@ -34,10 +34,11 @@ class Gui():
 
         # canvas
 
-        self.canvas = tk.Canvas(parent, width=640, height= 400, bg=BLACK)
-        self.canvas.pack(expand=tk.YES, fill=tk.BOTH)
+        self.map = tk.Canvas(parent, width=640, height= 400, bg=BLACK)
+        self.map.pack(expand=tk.YES, fill=tk.BOTH)
 
-
+    def draw_map(self, engine):
+        """Paint the GUI map canvas with the objects in engine."""
 
 
 

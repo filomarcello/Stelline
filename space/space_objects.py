@@ -7,15 +7,11 @@ from space.tools import star_random_class
 
 class Star():
 
-    def __init__(self, name: str = 'star', cls: str = None, label: str = None):
+    def __init__(self, cls: str, name: str = 'star'):
         """If cls (spectral class) left None, it will be random."""
 
         self._name = name
-        self._label = label
-        if cls:
-            self._cls = cls
-        else:
-            self._cls = star_random_class()
+        self._cls = cls
 
         # TODO: other physical parameters: mass, temperature, etc.
 
@@ -68,6 +64,30 @@ class System(Coordinates2D):
             raise StopIteration
         else:
             return self._planets[self._curr - 1]
+
+
+class Galaxy():
+    """A collection of solar systems.
+
+    Allows iterating on its systems."""
+
+    def __init__(self, systems: list):
+
+        self._systems = systems
+        self._n_systems = len(self._systems)
+
+    # iteration protocol
+
+    def __iter__(self):
+        self._curr = 0
+        return self
+
+    def __next__(self):
+        self._curr += 1
+        if self._curr > self._n_systems:
+            raise StopIteration
+        else:
+            return self._systems[self._curr - 1]
 
 
 

@@ -1,8 +1,7 @@
 import unittest
 
-from space.galaxies import Galaxy
 from space.geometry import Coordinates2D
-from space.star_systems import Planet, Star, System
+from space.space_objects import Planet, Star, System, Galaxy
 
 
 class SpaceTest(unittest.TestCase):
